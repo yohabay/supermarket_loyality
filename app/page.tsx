@@ -43,6 +43,8 @@ export default function Home() {
             alt="Gursha App Logo"
             width={32}
             height={32}
+            layout="fixed"
+            style={{ width: "32px", height: "32px", objectFit: "fill" }}
             className="rounded-lg"
           />
           <span className="font-bold text-xl text-gray-900">Gursha App</span>
@@ -79,26 +81,6 @@ export default function Home() {
           >
             Offers
           </button>
-          <button
-            onClick={() =>
-              document
-                .getElementById("features")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="text-gray-700 hover:text-orange-600 transition-colors cursor-pointer font-bold"
-          >
-            Features
-          </button>
-          <button
-            onClick={() =>
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="text-gray-700 hover:text-orange-600 transition-colors cursor-pointer font-bold"
-          >
-            Contact
-          </button>
         </div>
 
         <div className="flex items-center space-x-2 sm:space-x-4">
@@ -122,8 +104,10 @@ export default function Home() {
               <Image
                 src="/google-play-icon-white.png"
                 alt="Google Play"
-                width={20}
-                height={20}
+                width={35}
+                height={30}
+                layout="fixed"
+                style={{ width: "35px", height: "30px", objectFit: "fill" }}
                 className="mr-2"
               />
               Dowload
@@ -156,10 +140,10 @@ export default function Home() {
                 never miss a great deal again.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+              <div className="flex flex-row gap-3 sm:gap-2 justify-center lg:justify-start px-2">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="w-full max-w-[160px] sm:max-w-[200px] lg:max-w-[260px] bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-4 sm:px-2 lg:px-10 py-3 sm:py-4 lg:py-5 text-sm sm:text-base lg:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={() =>
                     window.open(
                       "https://play.google.com/store/apps/details?id=com.discover.shewaber",
@@ -170,38 +154,43 @@ export default function Home() {
                   <Image
                     src="/google-play-icon-white.png"
                     alt="Google Play"
-                    width={24}
-                    height={24}
-                    className="mr-2"
+                    width={35}
+                    height={30}
+                    layout="fixed"
+                    style={{ width: "35px", height: "30px", objectFit: "fill" }}
                   />
                   Download Now
                 </Button>
+
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="w-full max-w-[160px] sm:max-w-[200px] lg:max-w-[260px] bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-4 sm:px-6 lg:px-10 py-3 sm:py-4 lg:py-5 text-sm sm:text-base lg:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={handleAppStoreClick}
                 >
                   <Image
-                    src="/app-store-icon-white.png"
+                    src="/applelogo.png"
                     alt="App Store"
                     width={24}
                     height={24}
-                    className="mr-2"
+                    layout="fixed"
+                    style={{ width: "24px", height: "24px", objectFit: "fill" }}
                   />
                   Download Now
                 </Button>
               </div>
             </div>
 
-            <div className="flex justify-center lg:justify-end">
+            <div className="flex justify-center lg:justify-end max-w-[280px] mx-auto">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-400 rounded-3xl blur-2xl opacity-20 scale-105"></div>
                 <Image
                   src="/gursha-hero-screenshot.png"
                   alt="Gursha App Interface"
                   width={240}
-                  height={280}
-                  className="relative rounded-3xl shadow-2xl border-4 border-white/20 w-48 sm:w-64 lg:w-80 h-auto"
+                  height={420}
+                  layout="fixed"
+                  style={{ width: "240px", height: "420px", objectFit: "fill" }}
+                  className="relative rounded-3xl shadow-2xl border-4 border-white/20"
                 />
               </div>
             </div>
@@ -244,16 +233,23 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <Image
-                src="/restaurant-details-screen.png"
-                alt="Restaurant Map Discovery"
-                width={320}
-                height={360}
-                className="rounded-3xl shadow-2xl mx-auto"
-              />
+            {/* Image - hidden on mobile, shown only on large screens */}
+            <div className="hidden lg:flex justify-center lg:justify-end max-w-[280px] mx-auto">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-400 rounded-3xl blur-2xl opacity-20 scale-105"></div>
+                <Image
+                  src="/app-map-interface.png"
+                  alt="Gursha App Interface"
+                  width={240}
+                  height={420}
+                  layout="fixed"
+                  style={{ width: "240px", height: "420px", objectFit: "fill" }}
+                  className="relative rounded-3xl shadow-2xl border-4 border-white/20"
+                />
+              </div>
             </div>
 
+            {/* Text Content */}
             <div>
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                 Explore Exclusive
@@ -333,28 +329,28 @@ export default function Home() {
                 number: "01",
                 title: "Restaurant Discovery",
                 text: "Find restaurants near you with our interactive map and location-based search features.",
-                img: "/restaurant-details-screen.png",
+                img: "/photo_2025-08-13_16-15-08-portrait.png",
                 alt: "Restaurant Details with Offers",
               },
               {
                 number: "02",
                 title: "Instant Offers",
                 text: "Access exclusive discounts and offers from your favorite restaurants with just one tap.",
-                img: "/service-rating-screen.png",
+                img: "/photo_2025-08-13_16-15-11-portrait.png",
                 alt: "Service Rating Interface",
               },
               {
                 number: "03",
                 title: "Social Reviews",
                 text: "Rate restaurants, follow other foodies, and climb the social leaderboard rankings.",
-                img: "/place-rating-screen.png",
+                img: "/photo_2025-08-13_16-15-11-left.png",
                 alt: "Place Rating Interface",
               },
               {
                 number: "04",
                 title: "Rewards Program",
                 text: "Earn points with every restaurant visit and unlock exclusive premium benefits.",
-                img: "/social-review-sharing.png",
+                img: "/photo_2025-08-13_16-15-16-left.png",
                 alt: "Social Review Sharing",
               },
             ].map((feature, i) => (
@@ -369,13 +365,19 @@ export default function Home() {
                 </h3>
                 <p className="text-gray-600 mb-4">{feature.text}</p>
 
-                {/* Mobile image (smaller) */}
-                <div className="block md:hidden">
+                {/* Mobile image */}
+                <div className="block md:hidden max-w-[280px] mx-auto">
                   <Image
                     src={feature.img}
                     alt={feature.alt}
-                    width={128}
-                    height={208}
+                    width={280}
+                    height={320}
+                    layout="fixed"
+                    style={{
+                      width: "180px",
+                      height: "320px",
+                      objectFit: "fill",
+                    }}
                     className="rounded-2xl shadow-lg mx-auto"
                   />
                 </div>
@@ -383,20 +385,22 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Desktop images (original size at bottom) */}
+          {/* Desktop images */}
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center mt-16">
             {[
-              "/restaurant-details-screen.png",
-              "/service-rating-screen.png",
-              "/place-rating-screen.png",
-              "/social-review-sharing.png",
+              "/photo_2025-08-13_16-15-08-portrait.png",
+              "/photo_2025-08-13_16-15-11-left.png",
+              "/photo_2025-08-13_16-15-13-portrait.png",
+              "/photo_2025-08-13_16-15-16-left.png",
             ].map((img, i) => (
               <Image
                 key={i}
                 src={img}
                 alt={`Feature image ${i + 1}`}
-                width={224}
-                height={360}
+                width={180}
+                height={320}
+                layout="fixed"
+                style={{ width: "180px", height: "320px", objectFit: "fill" }}
                 className="rounded-3xl shadow-2xl"
               />
             ))}
@@ -480,10 +484,10 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-black hover:bg-gray-800 text-white px-8 py-4 rounded-xl flex items-center gap-3 text-lg font-semibold"
+                  className="bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-xl flex items-center gap-2 text-base sm:text-lg font-semibold min-w-[140px]"
                   onClick={() =>
                     window.open(
                       "https://play.google.com/store/apps/details?id=com.discover.shewaber",
@@ -494,196 +498,43 @@ export default function Home() {
                   <Image
                     src="/google-play-icon-white.png"
                     alt="Google Play"
-                    width={24}
+                    width={28}
                     height={24}
+                    style={{ objectFit: "fill" }}
                   />
-                  Download for Android
+                  Android
                 </Button>
+
                 <Button
                   size="lg"
-                  className="bg-black hover:bg-gray-800 text-white px-8 py-4 rounded-xl flex items-center gap-3 text-lg font-semibold"
+                  className="bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-xl flex items-center gap-2 text-base sm:text-lg font-semibold min-w-[140px]"
                   onClick={handleAppStoreClick}
                 >
                   <Image
-                    src="/app-store-icon-white.png"
+                    src="/applelogo.png"
                     alt="App Store"
-                    width={24}
-                    height={24}
+                    width={20}
+                    height={20}
+                    style={{ objectFit: "fill" }}
                   />
-                  Download for iOS
+                  iOS
                 </Button>
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative max-w-[280px] mx-auto">
               <div className="relative z-10 flex justify-center">
                 <Image
                   src="/gursha-hero-screenshot.png"
                   alt="Gursha Restaurant App"
-                  width={240}
-                  height={400}
+                  width={180}
+                  height={320}
+                  layout="fixed"
+                  style={{ width: "180px", height: "320px", objectFit: "fill" }}
                   className="rounded-3xl shadow-2xl"
                 />
               </div>
               <div className="absolute inset-0 bg-white/20 rounded-full blur-3xl"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-16 sm:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Get in Touch
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Have questions about Gursha App? We'd love to hear from you.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <div className="space-y-8">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <svg
-                    className="w-6 h-6 text-orange-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    Location
-                  </h3>
-                  <p className="text-gray-600">Addis Ababa, Ethiopia</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <svg
-                    className="w-6 h-6 text-orange-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    Email
-                  </h3>
-                  <p className="text-gray-600">info@shewaber.com</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <svg
-                    className="w-6 h-6 text-orange-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 18h.01M6 6h12a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8a2 2 0 012-2z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    Website
-                  </h3>
-                  <a
-                    href="https://shewaber.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-orange-600 hover:text-orange-700"
-                  >
-                    shewaber.com
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <form className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                    placeholder="Tell us how we can help you..."
-                  ></textarea>
-                </div>
-                <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700"
-                >
-                  Send Message
-                </Button>
-              </form>
             </div>
           </div>
         </div>
@@ -700,6 +551,8 @@ export default function Home() {
                   alt="Gursha Logo"
                   width={32}
                   height={32}
+                  layout="fixed"
+                  style={{ width: "32px", height: "32px", objectFit: "fill" }}
                   className="rounded-lg"
                 />
                 <span className="font-bold text-xl">Gursha App</span>
@@ -742,26 +595,6 @@ export default function Home() {
                   className="block text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
                   Offers
-                </button>
-                <button
-                  onClick={() =>
-                    document
-                      .getElementById("features")
-                      ?.scrollIntoView({ behavior: "smooth" })
-                  }
-                  className="block text-gray-400 hover:text-white transition-colors cursor-pointer"
-                >
-                  Features
-                </button>
-                <button
-                  onClick={() =>
-                    document
-                      .getElementById("contact")
-                      ?.scrollIntoView({ behavior: "smooth" })
-                  }
-                  className="block text-gray-400 hover:text-white transition-colors cursor-pointer"
-                >
-                  Contact
                 </button>
               </div>
             </div>
@@ -812,8 +645,11 @@ export default function Home() {
                   <Image
                     src="/google-play-icon-white.png"
                     alt="Google Play"
-                    width={20}
-                    height={20}
+                    width={35}
+                    height={30}
+                    layout="fixed"
+                    style={{ width: "35px", height: "30px", objectFit: "fill" }}
+                    className="mr-2"
                   />
                   Google Play
                 </Button>
@@ -823,10 +659,13 @@ export default function Home() {
                   onClick={handleAppStoreClick}
                 >
                   <Image
-                    src="/app-store-icon-white.png"
+                    src="/applelogo.png"
                     alt="App Store"
                     width={20}
                     height={20}
+                    layout="fixed"
+                    style={{ width: "20px", height: "20px", objectFit: "fill" }}
+                    className="mr-2"
                   />
                   App Store
                 </Button>
