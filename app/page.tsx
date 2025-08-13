@@ -3,10 +3,38 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Gift, MapPin } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleAppStoreClick = () => {
+    setShowPopup(true);
+    setTimeout(() => setShowPopup(false), 3000); // Auto-close after 3 seconds
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Popup */}
+      {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50">
+          <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full text-center">
+            <h3 className="text-lg font-bold text-gray-900 mb-2">
+              Coming Soon!
+            </h3>
+            <p className="text-gray-600">
+              The Gursha App for iOS is coming soon to the App Store.
+            </p>
+            <Button
+              className="mt-4 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white"
+              onClick={() => setShowPopup(false)}
+            >
+              Close
+            </Button>
+          </div>
+        </div>
+      )}
+
       {/* Navigation */}
       <nav className="flex items-center justify-between px-4 sm:px-6 py-4 bg-white/80 backdrop-blur-sm border-b border-orange-100">
         <div className="flex items-center space-x-2">
@@ -81,17 +109,26 @@ export default function Home() {
           >
             Join
           </Button>
-          <Button
-            className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-sm sm:text-base px-3 sm:px-6"
-            onClick={() =>
-              window.open(
-                "https://play.google.com/store/apps/details?id=com.discover.shewaber",
-                "_blank"
-              )
-            }
-          >
-            Download
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-sm sm:text-base px-3 sm:px-6"
+              onClick={() =>
+                window.open(
+                  "https://play.google.com/store/apps/details?id=com.discover.shewaber",
+                  "_blank"
+                )
+              }
+            >
+              <Image
+                src="/google-play-icon-white.png"
+                alt="Google Play"
+                width={20}
+                height={20}
+                className="mr-2"
+              />
+              Dowload
+            </Button>
+          </div>
         </div>
       </nav>
 
@@ -133,6 +170,20 @@ export default function Home() {
                   <Image
                     src="/google-play-icon-white.png"
                     alt="Google Play"
+                    width={24}
+                    height={24}
+                    className="mr-2"
+                  />
+                  Download Now
+                </Button>
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  onClick={handleAppStoreClick}
+                >
+                  <Image
+                    src="/app-store-icon-white.png"
+                    alt="App Store"
                     width={24}
                     height={24}
                     className="mr-2"
@@ -448,6 +499,19 @@ export default function Home() {
                   />
                   Download for Android
                 </Button>
+                <Button
+                  size="lg"
+                  className="bg-black hover:bg-gray-800 text-white px-8 py-4 rounded-xl flex items-center gap-3 text-lg font-semibold"
+                  onClick={handleAppStoreClick}
+                >
+                  <Image
+                    src="/app-store-icon-white.png"
+                    alt="App Store"
+                    width={24}
+                    height={24}
+                  />
+                  Download for iOS
+                </Button>
               </div>
             </div>
 
@@ -752,6 +816,19 @@ export default function Home() {
                     height={20}
                   />
                   Google Play
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full justify-start text-white border-gray-600 hover:bg-gray-800 bg-transparent"
+                  onClick={handleAppStoreClick}
+                >
+                  <Image
+                    src="/app-store-icon-white.png"
+                    alt="App Store"
+                    width={20}
+                    height={20}
+                  />
+                  App Store
                 </Button>
               </div>
             </div>
