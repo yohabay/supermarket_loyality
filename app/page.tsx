@@ -1,18 +1,19 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Instagram, Linkedin } from "lucide-react";
+import {
+  CheckCircle2,
+  CreditCard,
+  Gift,
+  Instagram,
+  Linkedin,
+  ShoppingBag,
+  Tag,
+} from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [showPopup, setShowPopup] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
-  const handleAppStoreClick = () => {
-    setShowPopup(true);
-    setTimeout(() => setShowPopup(false), 3000); // Auto-close after 3 seconds
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,312 +24,341 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Popup */}
-      {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50">
-          <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full text-center">
-            <h3 className="text-lg font-bold text-gray-900 mb-2">
-              Coming Soon!
-            </h3>
-            <p className="text-gray-600">
-              The Gursha App for iOS is coming soon to the App Store.
-            </p>
-            <Button
-              className="mt-4 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white"
-              onClick={() => setShowPopup(false)}
-            >
-              Close
-            </Button>
-          </div>
-        </div>
-      )}
-
-      {/* Navigation */}
-      <nav
-        className={`flex items-center justify-between px-4 sm:px-6 py-4 transition-colors duration-300 ${
-          isScrolled
-            ? "bg-white/20 backdrop-blur-lg shadow-md"
-            : "bg-transparent"
-        } sticky top-0 z-50 border-b ${
-          isScrolled ? "border-orange-100" : "border-transparent"
-        }`}
-      >
-        <div className="flex items-center space-x-2">
-          <Image
-            src="/gursha-app-logo.png"
-            alt="Gursha App Logo"
-            width={32}
-            height={32}
-            layout="fixed"
-            style={{ width: "32px", height: "32px", objectFit: "fill" }}
-            className="rounded-lg"
-          />
-          <span className="font-bold text-xl text-gray-900">Gursha App</span>
-        </div>
-
-        <div className="hidden md:flex items-center space-x-8">
-          <button
-            onClick={() =>
-              document
-                .getElementById("home")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="text-gray-700 hover:text-orange-600 transition-colors cursor-pointer font-bold"
-          >
-            Home
-          </button>
-          <button
-            onClick={() =>
-              document
-                .getElementById("restaurants")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="text-gray-700 hover:text-orange-600 transition-colors cursor-pointer font-bold"
-          >
-            Why Choose Gursha?
-          </button>
-        </div>
-
-        <Button
-          variant="ghost"
-          className="flex items-center gap-0 font-bold text-orange-600 text-sm sm:text-base px-2 sm:px-4 cursor-pointer hover:text-orange-600"
-          style={{ columnGap: "0px" }}
-          onClick={() => window.open("https://shewaber.com/", "_blank")}
-        >
-          <span>Join Now</span>
-          <Image
-            src="/forwardarrow.png"
-            alt="Forward Arrow"
-            width={18}
-            height={18}
-            style={{
-              objectFit: "contain",
-              filter:
-                "invert(42%) sepia(98%) saturate(2625%) hue-rotate(357deg) brightness(96%) contrast(101%)", // orange tint
-            }}
-          />
-        </Button>
-      </nav>
-
+    <div className="min-h-screen bg-white font-sans">
       {/* Hero Section */}
       <section
-        className="relative px-4 sm:px-6 py-12 sm:py-20 bg-gradient-to-br from-orange-50 via-red-50 to-orange-100 overflow-hidden"
+        className="relative bg-gradient-to-br from-orange-50 via-white to-orange-50 py-20 overflow-hidden"
         id="home"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-400/10 to-red-400/10"></div>
-
-        <div className="relative max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="text-center lg:text-left space-y-6 sm:space-y-8">
-              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Discover new Restaurants with friends{" "}
-                {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">
-                  Restaurant Offers
-                </span>{" "}
-                Near You */}
-              </h1>
-              <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0">
-                Join other foodies & Start exploring top new spots in Addis
-                together.
-              </p>
-
-              <div className="flex flex-row gap-3 sm:gap-2 justify-center lg:justify-start px-2">
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.discover.shewaber"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Image
-                    src="/playstorebutton.png"
-                    alt="Google Play"
-                    width={150}
-                    height={60}
-                    layout="fixed"
-                    style={{
-                      width: "150px",
-                      height: "60px",
-                      objectFit: "contain",
-                    }}
-                  />
-                </a>
-
-                <a
-                  href="#"
-                  onClick={handleAppStoreClick}
-                  className="flex flex-col items-center"
-                >
-                  <Image
-                    src="/applebutton.png"
-                    alt="App Store"
-                    width={150}
-                    height={60}
-                    layout="fixed"
-                    style={{
-                      width: "150px",
-                      height: "60px",
-                      objectFit: "contain",
-                    }}
-                  />
-                  <span style={{ fontSize: "10px" }}>Comming soon...</span>
-                </a>
-              </div>
-            </div>
-
-            <div className="flex justify-center lg:justify-end max-w-[280px] mx-auto">
-              <div className="relative">
-                {/* Removed gradient glow */}
-                <Image
-                  src="/gursha-hero-screenshot.png"
-                  alt="Gursha App Interface"
-                  width={200}
-                  height={420}
-                  layout="fixed"
-                  style={{ width: "200px", height: "420px", objectFit: "fill" }}
-                  className="relative rounded-3xl shadow-2xl border-4 border-black"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="px-6 py-16 bg-white" id="">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              We connect food lovers with new restaurants
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="flex items-center justify-center space-x-2 mb-1">
-                {/* Restaurant SVG */}
-                <img
-                  src="/resturants.svg"
-                  alt="Restaurants"
-                  className="h-8 w-8 text-gray-400"
-                />
-                <div className="text-5xl lg:text-5xl font-bold text-black">
-                  300+
-                </div>
-              </div>
-              <div className="text-gray-600 font-medium">Restaurants</div>
-            </div>
-
-            <div className="text-center">
-              <div className="flex items-center justify-center space-x-2 mb-1">
-                {/* Reward SVG */}
-                <img
-                  src="/reward.svg"
-                  alt="Offers"
-                  className="h-8 w-8 text-gray-400"
-                />
-                <div className="text-5xl lg:text-5xl font-bold text-black">
-                  100+
-                </div>
-              </div>
-              <div className="text-gray-600 font-medium">
-                Offers added every month
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Grid Section */}
-      <section
-        className="px-6 py-12 md:py-20 bg-gradient-to-br from-orange-50 to-red-50 "
-        id="restaurants"
-      >
-        <div className="max-w-7xl mx-auto">
-          {/* Heading */}
-          <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
-              The App for
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">
-                Exploring New Places
-              </span>
-            </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-              Why food lovers choose Gursha App
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center px-4 sm:px-6">
+          {/* Left: Headlines and CTA */}
+          <div className="text-left md:pr-8">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900 mb-4">
+              Get Rewarded for Your Loyalty With Our{" "}
+              <span className="text-orange-600">Supermarket App</span>{" "}
+            </h1>
+            <p className="text-base sm:text-lg text-gray-600 max-w-md mb-6">
+              Start earning points and unlocking exclusive rewards every time
+              you shop. Our loyalty app makes it easy to save money and get more
+              from your everyday purchases.
             </p>
+
+            <div className="flex flex-row gap-3 sm:gap-2 justify-center lg:justify-start px-2">
+              <a
+                href="#"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center"
+              >
+                <Image
+                  src="/playstorebutton.png"
+                  alt="Google Play"
+                  width={150}
+                  height={60}
+                  layout="fixed"
+                  style={{
+                    width: "150px",
+                    height: "60px",
+                    objectFit: "contain",
+                  }}
+                />
+                <span style={{ fontSize: "10px" }}>Comming soon...</span>
+              </a>
+
+              <a href="#" className="flex flex-col items-center">
+                <Image
+                  src="/applebutton.png"
+                  alt="App Store"
+                  width={150}
+                  height={60}
+                  layout="fixed"
+                  style={{
+                    width: "150px",
+                    height: "60px",
+                    objectFit: "contain",
+                  }}
+                />
+                <span style={{ fontSize: "10px" }}>Comming soon...</span>
+              </a>
+            </div>
           </div>
 
-          {/* Features */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                number: "01",
-                title: "Discover new restaurants",
-                text: "Restaruants near you haven't tried before",
-                // img: "/photo_2025-08-13_16-15-08-portrait.png",
-                alt: "Explore Top New Restaurants",
-              },
-              {
-                number: "02",
-                title: "Exclusive Discounts & Offers",
-                text: "Try new places & save money on your first visit!",
-                // img: "/photo_2025-08-13_16-15-11-portrait.png",
-                alt: "Exclusive Cool Offers",
-              },
-              {
-                number: "03",
-                title: "Rank Restaurants",
-                text: "Rank restaurants, follow other foodies & invite your friends to join the party!",
-                // img: "/photo_2025-08-13_16-15-11-left.png",
-                alt: "Place Rating Interface",
-              },
-            ].map((feature, i) => (
-              <div key={i} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl font-bold">
-                    {feature.number}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{feature.text}</p>
-                {/* Mobile image */}
-                {/* <div className="block md:hidden max-w-[280px] mx-auto">
-                  <Image
-                    src={feature.img}
-                    alt={feature.alt}
-                    width={280}
-                    height={320}
-                    layout="fixed"
-                    style={{
-                      width: "180px",
-                      height: "320px",
-                      objectFit: "fill",
-                    }}
-                    className="rounded-2xl shadow-lg mx-auto"
-                  />
-                </div> */}
-              </div>
-            ))}
-          </div>
-          {/* Desktop images */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center mt-16">
-            {[
-              "/photo_2025-08-13_16-15-08-portrait.png",
-              "/photo_2025-08-13_16-15-11-left.png",
-              "/photo_2025-08-13_16-15-13-portrait.png",
-            ].map((img, i) => (
-              <Image
-                key={i}
-                src={img}
-                alt={`Feature image ${i + 1}`}
-                width={180}
-                height={320}
-                layout="fixed"
-                style={{ width: "180px", height: "320px", objectFit: "fill" }}
-                className="rounded-3xl shadow-2xl"
+          {/* Right: App Screenshot Mockup */}
+          <div className="mt-12 md:mt-0 flex justify-center relative">
+            <div className="relative">
+              <img
+                src="/photo_2025-09-03_13-34-41-portrait.png"
+                alt="Supermarket Loyalty App Interface"
+                width={260}
+                height={520}
+                className="rounded-xl "
+                style={{ width: "260px", height: "520px", objectFit: "cover" }}
               />
-            ))}
+              {/* Delivery Badge */}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Delivery Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center gap-8">
+          {/* Left: Circular Background + App Image */}
+          <div className="flex-1 flex justify-center mb-10 md:mb-0 relative">
+            {/* Circle wrapper */}
+            <div
+              className="relative"
+              style={{
+                width: "340px",
+                height: "340px",
+                borderRadius: "50%",
+                background:
+                  "radial-gradient(circle, rgba(194,232,206,0.35) 60%, rgba(255,255,255,0) 100%)",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                overflow: "hidden", // ensures the image stays inside the circle
+              }}
+            >
+              {/* Phone mockup inside the circle */}
+              <img
+                src="/photo_2025-09-03_13-34-35-portrait.png"
+                alt="Supermarket Loyalty App"
+                className="rounded-xl shadow-2xl object-contain"
+                style={{
+                  width: "50%", // reduce size so full image fits
+                  height: "auto",
+                  zIndex: 10,
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Right: About Content */}
+          <div className="flex-1 max-w-xl md:pl-12 text-left">
+            <div className="flex items-center gap-2 mb-2"></div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
+              Your Shopping, More Rewarding.
+            </h2>
+            <p className="text-base sm:text-lg text-gray-600 mb-6">
+              We’re more than just a supermarket app — we’re your partner in
+              saving. Our loyalty program is designed to give back to you, our
+              valued customer, with points, discounts, and special offers every
+              time you shop.
+            </p>
+
+            <div className="grid grid-cols-2 gap-3 mb-7">
+              <div className="flex items-center gap-2">
+                <span className="text-green-600 text-xl">✓</span>
+                <span className="text-sm font-medium text-gray-800">
+                  Earn Points on Every Purchase
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-blue-600 text-xl">✓</span>
+                <span className="text-sm font-medium text-gray-800">
+                  Exclusive Member-Only Offers
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-600 text-xl">✓</span>
+                <span className="text-sm font-medium text-gray-800">
+                  Personalized Rewards
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-blue-600 text-xl">✓</span>
+                <span className="text-sm font-medium text-gray-800">
+                  24/7 Customer Support
+                </span>
+              </div>
+            </div>
+
+            <button className="bg-orange-500 hover:bg-orange-600 transition text-white font-semibold px-7 py-3 rounded-2xl shadow-lg cursor-pointer">
+              Check in App
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Shop Smarter Section */}
+
+      <section className="px-4 sm:px-8 py-16 bg-white">
+        <div className="max-w-5xl mx-auto">
+          {/* Heading */}
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-4">
+            Smart Features for Savvy Shoppers
+          </h2>
+          {/* Description */}
+          <p className="text-gray-600 text-center max-w-2xl mx-auto mb-10">
+            Everything you need to make your shopping more rewarding, from
+            tracking your points to discovering new offers.
+          </p>
+
+          {/* Cards and Mobile Mockup Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+            {/* Left side cards */}
+            <div className="flex flex-col gap-6">
+              <div className="bg-orange-50 rounded-xl px-7 py-6 shadow hover:shadow-md transition">
+                <div className="mb-4">
+                  <ShoppingBag className="w-7 h-7 text-orange-500" />
+                </div>
+                <h3 className="font-bold text-lg text-gray-800 mb-2">
+                  Shop & Earn Points
+                </h3>
+                <p className="text-gray-600 mb-2 text-sm">
+                  Automatically earn loyalty points with every purchase you make
+                  in-store.
+                </p>
+              </div>
+
+              <div className="bg-orange-50 rounded-xl px-7 py-6 shadow hover:shadow-md transition">
+                <div className="mb-4">
+                  <Tag className="w-7 h-7 text-pink-500" />
+                </div>
+                <h3 className="font-bold text-lg text-gray-800 mb-2">
+                  Exclusive Offers
+                </h3>
+                <p className="text-gray-600 mb-2 text-sm">
+                  Access special discounts and promotions available only to our
+                  loyalty app members.
+                </p>
+              </div>
+            </div>
+
+            {/* Center mobile mockup */}
+            <div className="flex flex-col justify-center">
+              <div className="mx-auto md:mt-8 md:mb-8">
+                <img
+                  src="/photo_2025-09-03_13-34-33-portrait.png"
+                  alt="Supermarket Loyalty App mobile preview"
+                  style={{
+                    width: "230px",
+                    height: "420px",
+                    objectFit: "contain",
+                  }}
+                />
+              </div>
+
+              {/* Bottom card */}
+              <div className="bg-orange-50 rounded-xl px-7 py-6 shadow hover:shadow-md transition mt-6">
+                <div className="mb-4">
+                  <Gift className="w-7 h-7 text-purple-500" />
+                </div>
+                <h3 className="font-bold text-lg text-gray-800 mb-2">
+                  Store & Use Discounts
+                </h3>
+                <p className="text-gray-600 mb-2 text-sm">
+                  Securely store your earned discounts and apply them to future
+                  purchases with ease.
+                </p>
+              </div>
+            </div>
+
+            {/* Right side cards */}
+            <div className="flex flex-col gap-6">
+              <div className="bg-orange-50 rounded-xl px-7 py-6 shadow hover:shadow-md transition">
+                <div className="mb-4">
+                  <CheckCircle2 className="w-7 h-7 text-green-500" />
+                </div>
+                <h3 className="font-bold text-lg text-gray-800 mb-2">
+                  Easy Redemption
+                </h3>
+                <p className="text-gray-600 mb-2 text-sm">
+                  Redeem your points for discounts, free products, and more,
+                  directly from the app.
+                </p>
+              </div>
+
+              <div className="bg-orange-50 rounded-xl px-7 py-6 shadow hover:shadow-md transition">
+                <div className="mb-4">
+                  <CreditCard className="w-7 h-7 text-blue-500" />
+                </div>
+                <h3 className="font-bold text-lg text-gray-800 mb-2">
+                  Supermarket Loyalty Card
+                </h3>
+                <p className="text-gray-600 mb-2 text-sm">
+                  Keep all your rewards, offers, and points in one secure place
+                  with our digital loyalty card feature.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#F6F6F6] relative px-0 pt-12 pb-0 flex flex-col items-center justify-center">
+        {/* Swirl background SVG */}
+        <svg
+          className="absolute left-0 top-0 w-full h-full pointer-events-none z-0"
+          viewBox="0 0 960 340"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M0,190 Q480,-100 960,190"
+            stroke="#EAEAEC"
+            strokeWidth="80"
+            fill="none"
+          />
+        </svg>
+        <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start max-w-5xl mx-auto w-full">
+          {/* Phone Image */}
+          <div className="flex-1 flex justify-center md:justify-start items-center md:items-start mb-6 md:mb-0">
+            <img
+              src="/photo_2025-09-03_13-34-37-portrait.png"
+              alt="App screenshot"
+              className="w-[240px] h-[480px] object-contain"
+            />
+          </div>
+          {/* Text + Buttons */}
+          <div className="flex-1 flex flex-col items-center md:items-start px-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-left">
+              Unlock a World of Savings and Rewards
+            </h2>
+            <p className="text-base text-gray-700 mb-6 text-left max-w-md">
+              Get a feel for the intuitive design and smooth user flow of our
+              loyalty app. From tracking your points to redeeming rewards, every
+              screen is thoughtfully crafted to enhance your shopping
+              experience.
+            </p>
+            <div className="flex flex-row gap-3 sm:gap-2 justify-center lg:justify-start px-2">
+              <a
+                href="#"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center"
+              >
+                <Image
+                  src="/playstorebutton.png"
+                  alt="Google Play"
+                  width={150}
+                  height={60}
+                  layout="fixed"
+                  style={{
+                    width: "150px",
+                    height: "60px",
+                    objectFit: "contain",
+                  }}
+                />
+                <span style={{ fontSize: "10px" }}>Comming soon...</span>
+              </a>
+
+              <a href="#" className="flex flex-col items-center">
+                <Image
+                  src="/applebutton.png"
+                  alt="App Store"
+                  width={150}
+                  height={60}
+                  layout="fixed"
+                  style={{
+                    width: "150px",
+                    height: "60px",
+                    objectFit: "contain",
+                  }}
+                />
+                <span style={{ fontSize: "10px" }}>Comming soon...</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -341,20 +371,24 @@ export default function Home() {
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <Image
-                  src="/gursha-app-logo.png"
-                  alt="Gursha Logo"
-                  width={32}
-                  height={32}
+                  src="/shewaberlogo.png"
+                  alt="shewaber rewards logo"
+                  width={120}
+                  height={50}
                   layout="fixed"
-                  style={{ width: "32px", height: "32px", objectFit: "fill" }}
+                  style={{
+                    width: "100px",
+                    height: "50px",
+                    objectFit: "contain",
+                  }}
                   className="rounded-lg"
                 />
-                <span className="font-bold text-xl">Gursha App</span>
               </div>
               <p className="text-gray-400">
-                Food, Friends & Offers all in One App.
+                Shop, Save & Redeem with Shewaber Rewards.
               </p>
             </div>
+
             {/* Social Media */}
             <div className="space-y-4">
               <h4 className="font-semibold text-lg">Follow Us</h4>
@@ -387,14 +421,15 @@ export default function Home() {
                 </a>
               </div>
             </div>
+
             {/* Download App */}
             <div className="space-y-4">
               <h4 className="font-semibold text-lg">Download App</h4>
               <div className="flex flex-col gap-2">
                 <a
-                  href="https://play.google.com/store/apps/details?id=com.discover.shewaber"
-                  target="_blank"
+                  href="#"
                   rel="noopener noreferrer"
+                  className="flex flex-col items-center"
                 >
                   <Image
                     src="/playstorebutton.png"
@@ -403,6 +438,7 @@ export default function Home() {
                     height={54}
                     style={{ objectFit: "contain" }}
                   />
+                  <span style={{ fontSize: "10px" }}>Coming soon...</span>
                 </a>
               </div>
             </div>
@@ -412,7 +448,7 @@ export default function Home() {
           <div className="border-t border-gray-800 pt-8 mt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-gray-400 text-sm">
-                © 2024 Gursha. All rights reserved.
+                © 2024 Shewaber Rewards. All rights reserved.
               </p>
               <div className="flex items-center space-x-6 mt-4 md:mt-0">
                 <a
